@@ -1,7 +1,7 @@
 package com.main.controller;
 
 import com.main.exception.RecordNotFoundException;
-import com.main.model.BaseResponseModel;
+import com.main.model.ListProductModel;
 import com.main.model.ProductModel;
 import com.main.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,31 @@ public class ProductController {
     }
 
     @GetMapping("/pageproduct")
-    public List<ProductModel> getListPageProduct(@RequestParam int page, @RequestParam int size) {
+    public List<ListProductModel> getListPageProduct(@RequestParam int id, @RequestParam int page, @RequestParam int size){
+        return service.getListPageProduct(id,page,size);
+    }
 
-        return service.getPageProduct(page, size);
+    @GetMapping("/homepage")
+    public List<ListProductModel> getListSize() {
+        return service.getListSize();
+    }
+
+    @PostMapping
+    public ResponseEntity<ProductModel> createOrUpdateProduct(@RequestBody ProductModel product)
+            throws RecordNotFoundException {
+        ProductModel updated = service.createOrUpdateProduct(product);
+        return new ResponseEntity<ProductModel>(updated, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public HttpStatus deleteProductById(@PathVariable("id") Integer id)
+            throws RecordNotFoundException {
+        service.deleteProductById(id);
+        return HttpStatus.OK;
+    }
+    @GetMapping("search={search}")
+    public ResponseEntity<List<ProductModel>> getSearch(@PathVariable("search") String search) throws RecordNotFoundException{
+        List<ProductModel> optional = service.searchProduct(search);
+        return new ResponseEntity<List<ProductModel>>(optional,new HttpHeaders(),HttpStatus.OK);
     }
 }

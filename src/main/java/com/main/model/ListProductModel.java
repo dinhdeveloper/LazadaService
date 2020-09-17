@@ -1,49 +1,48 @@
 package com.main.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@Entity
-@Table(name = "Product")
-public class ProductModel implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
-    @Column(name = "id")
-    private Integer id;
-    @Column(name = "id_code")
+public class ListProductModel implements Serializable {
+    private String id;
     private String id_code;
-    @Column(name = "color_id")
     private String color_id;
-    @Column(name = "product_name")
     private String product_name;
-    @Column(name = "product_image")
     private String product_image;
-    @Column(name = "price_import")
     private String price_import;
-    @Column(name = "price_export")
     private String price_export;
-    @Column(name = "quantity_import")
     private String quantity_import;
-    @Column(name = "quantity_export")
     private String quantity_export;
-    @Column(name = "safe_stock")
     private String safe_stock;
-    @Column(name = "date_create")
     private String date_create;
-    @Column(name = "status")
     private String status;
-    @Column(name = "total_import")
-    private String total_import;
-    @Column(name = "total_export")
-    private String total_export;
+    ArrayList<SizeColorModel> sizeColor = null;
 
-    public Integer getId() {
+    public ListProductModel() {
+    }
+
+    public ListProductModel(String id, String id_code, String color_id, String product_name, String product_image, String price_import, String price_export, String quantity_import, String quantity_export, String safe_stock, String date_create, String status, ArrayList<SizeColorModel> sizeColor) {
+        this.id = id;
+        this.id_code = id_code;
+        this.color_id = color_id;
+        this.product_name = product_name;
+        this.product_image = product_image;
+        this.price_import = price_import;
+        this.price_export = price_export;
+        this.quantity_import = quantity_import;
+        this.quantity_export = quantity_export;
+        this.safe_stock = safe_stock;
+        this.date_create = date_create;
+        this.status = status;
+        this.sizeColor = sizeColor;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -135,19 +134,11 @@ public class ProductModel implements Serializable {
         this.status = status;
     }
 
-    public String getTotal_import() {
-        return total_import;
+    public ArrayList<SizeColorModel> getSizeColorModel() {
+        return sizeColor;
     }
 
-    public void setTotal_import(String total_import) {
-        this.total_import = total_import;
-    }
-
-    public String getTotal_export() {
-        return total_export;
-    }
-
-    public void setTotal_export(String total_export) {
-        this.total_export = total_export;
+    public void setSizeColorModel(ArrayList<SizeColorModel> sizeColor) {
+        this.sizeColor = sizeColor;
     }
 }
