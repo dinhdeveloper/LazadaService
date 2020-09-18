@@ -99,6 +99,9 @@ public class ProductService {
                 if (entity.getQuantity_import() != null) {
                     newEntity.setQuantity_import(entity.getQuantity_import());
                 }
+                if (entity.getQuantity_export() != null) {
+                    newEntity.setQuantity_export(entity.getQuantity_export());
+                }
                 if (entity.getSafe_stock() != null) {
                     newEntity.setSafe_stock(entity.getSafe_stock());
                 }
