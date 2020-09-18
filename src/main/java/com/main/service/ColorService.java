@@ -27,6 +27,16 @@ public class ColorService {
         }
     }
 
+    //get by CateId
+    public List<ColorModel> getColorByCateId(Integer id) throws RecordNotFoundException {
+        List<ColorModel> productList = repository.findByCategoryId(id);
+        if (productList.size() > 0) {
+            return productList;
+        } else {
+            return new ArrayList<ColorModel>();
+        }
+    }
+
     //update or create
     public ColorModel createOrUpdateColor(ColorModel entity) throws RecordNotFoundException {
         if (entity.getId() != null) {

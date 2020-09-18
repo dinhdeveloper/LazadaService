@@ -25,6 +25,12 @@ public class ColorController {
         return new ResponseEntity<List<ColorModel>>(list, new HttpHeaders(), HttpStatus.OK);
     }
 
+    @GetMapping("/product={id}")
+    public ResponseEntity<List<ColorModel>> getByCateId(@PathVariable("id") Integer id) throws RecordNotFoundException {
+        List<ColorModel> optional = service.getColorByCateId(id);
+        return new ResponseEntity<List<ColorModel>>(optional,new HttpHeaders(),HttpStatus.OK);
+    }
+
     @PostMapping
     public ResponseEntity<ColorModel> createOrUpdateColor(@RequestBody ColorModel product)
             throws RecordNotFoundException {

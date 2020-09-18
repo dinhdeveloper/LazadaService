@@ -32,9 +32,11 @@ public class PriceFeesService {
     public List<ProductPriceModel> getListProduct(){
         List<ProductPriceModel> listProduct = new ArrayList<>();
         List<ProductModel> listPro = productRepository.findAll();
+        ArrayList<PriceFeesModel> listPrice = new ArrayList<>();
         for (ProductModel pro : listPro){
-            ArrayList<PriceFeesModel> listPrice = repository.getAllPriceByColorId(pro.getId());
-            listProduct.add(new ProductPriceModel(String.valueOf(pro.getId()),pro.getProduct_name(),pro.getDate_export(),listPrice));
+            listPrice.add(repository.getAllPriceByColorId(pro.getId()));
+
+           // listProduct.add(new ProductPriceModel(String.valueOf(pro.getId()),pro.getProduct_name(),pro.getDate_export(),listPrice));
         }
         return listProduct;
     }

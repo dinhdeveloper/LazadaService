@@ -12,5 +12,5 @@ import java.util.ArrayList;
 @Repository
 public interface PriceFeesRepository extends JpaRepository<PriceFeesModel, Integer> {
     @Query("SELECT DISTINCT s FROM ProductModel e,PriceFeesModel s WHERE e.id = s.product_id and s.product_id=?1")
-    ArrayList<PriceFeesModel> getAllPriceByColorId(int id);
+    PriceFeesModel getAllPriceByColorId(int id);
 }
