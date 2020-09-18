@@ -105,6 +105,9 @@ public class ProductService {
                 if (entity.getDate_create() != null) {
                     newEntity.setDate_create(entity.getDate_create());
                 }
+                if (entity.getDate_export() != null) {
+                    newEntity.setDate_export(entity.getDate_export());
+                }
                 if (entity.getStatus() != null) {
                     newEntity.setStatus(entity.getStatus());
                 }

@@ -32,6 +32,8 @@ public class ProductModel implements Serializable {
     private String safe_stock;
     @Column(name = "date_create")
     private String date_create;
+    @Column(name = "date_export")
+    private String date_export;
     @Column(name = "status")
     private String status;
     @Column(name = "total_import")
@@ -149,5 +151,13 @@ public class ProductModel implements Serializable {
 
     public void setTotal_export(String total_export) {
         this.total_export = total_export;
+    }
+
+    public String getDate_export() {
+        return date_export;
+    }
+
+    public void setDate_export(String date_export) {
+        this.date_export = date_export;
     }
 }
