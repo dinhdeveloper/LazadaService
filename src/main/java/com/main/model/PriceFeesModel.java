@@ -14,6 +14,8 @@ public class PriceFeesModel implements Serializable {
     private Integer id;
     @Column(name = "id_code")
     private String id_code;
+    @Column(name = "product_id")
+    private String product_id;
     @Column(name = "price_print")
     private String price_print;
     @Column(name = "price_ship")
@@ -51,6 +53,14 @@ public class PriceFeesModel implements Serializable {
 
     public String getPrice_ship() {
         return price_ship;
+    }
+
+    public String getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
     }
 
     public void setPrice_ship(String price_ship) {

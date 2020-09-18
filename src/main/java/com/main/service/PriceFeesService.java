@@ -1,8 +1,9 @@
 package com.main.service;
 
 import com.main.exception.RecordNotFoundException;
-import com.main.model.PriceFeesModel;
+import com.main.model.*;
 import com.main.repository.PriceFeesRepository;
+import com.main.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class PriceFeesService {
     @Autowired
     PriceFeesRepository repository;
 
+    @Autowired
+    ProductRepository productRepository;
+
     //get all
     public List<PriceFeesModel> getAllPriceFees() {
         List<PriceFeesModel> colorModels = repository.findAll();
@@ -23,6 +27,16 @@ public class PriceFeesService {
         } else {
             return new ArrayList<PriceFeesModel>();
         }
+    }
+
+    public List<ProductPriceModel> getListProduct(){
+        List<ProductPriceModel> listProduct = new ArrayList<>();
+        List<ProductModel> listPro = productRepository.findAll();
+        for (ProductModel pro : listPro){
+            ArrayList<PriceFeesModel> listPrice = repository.getAllPriceByColorId(pro.getId());
+            listProduct.add(new ProductPriceModel(String.valueOf(pro.getId()),pro.getProduct_name(),pro.getDate_export(),listPrice));
+        }
+        return listProduct;
     }
 
     //update or create
@@ -40,6 +54,9 @@ public class PriceFeesService {
                 }
                 if (entity.getPrice_ship() != null) {
                     newEntity.setPrice_ship(entity.getPrice_ship());
+                }
+                if (entity.getProduct_id() != null) {
+                    newEntity.setProduct_id(entity.getProduct_id());
                 }
                 if (entity.getPrice_sell() != null) {
                     newEntity.setPrice_sell(entity.getPrice_sell());

@@ -63,7 +63,8 @@ public class ProductService {
                 listProductModel.add(new ListProductModel(String.valueOf(proModel.getId()), proModel.getId_code(), proModel.getColor_id(),
                         proModel.getProduct_name(), proModel.getProduct_image(), proModel.getPrice_import(),
                         proModel.getPrice_export(), proModel.getQuantity_import(), proModel.getQuantity_export(), proModel.getSafe_stock(),
-                        proModel.getDate_create(), proModel.getStatus(), sizeColor));
+                        proModel.getDate_create(), proModel.getDate_export(), proModel.getTotal_import(),
+                        proModel.getTotal_export(), proModel.getStatus(), sizeColor));
             } else {
                 listColor = new ArrayList<>();
             }
@@ -133,6 +134,7 @@ public class ProductService {
             return entity;
         }
     }
+
     //delete
     public void deleteProductById(Integer id) throws RecordNotFoundException {
         Optional<ProductModel> product = repository.findById(id);

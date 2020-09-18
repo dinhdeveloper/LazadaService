@@ -16,13 +16,16 @@ public class ListProductModel implements Serializable {
     private String quantity_export;
     private String safe_stock;
     private String date_create;
+    private String date_export;
+    private String total_import;
+    private String total_export;
     private String status;
     ArrayList<SizeColorModel> sizeColor = null;
 
     public ListProductModel() {
     }
 
-    public ListProductModel(String id, String id_code, String color_id, String product_name, String product_image, String price_import, String price_export, String quantity_import, String quantity_export, String safe_stock, String date_create, String status, ArrayList<SizeColorModel> sizeColor) {
+    public ListProductModel(String id, String id_code, String color_id, String product_name, String product_image, String price_import, String price_export, String quantity_import, String quantity_export, String safe_stock, String date_create,String date_export, String total_import, String total_export, String status, ArrayList<SizeColorModel> sizeColor) {
         this.id = id;
         this.id_code = id_code;
         this.color_id = color_id;
@@ -34,6 +37,9 @@ public class ListProductModel implements Serializable {
         this.quantity_export = quantity_export;
         this.safe_stock = safe_stock;
         this.date_create = date_create;
+        this.date_export = date_export;
+        this.total_import = total_import;
+        this.total_export = total_export;
         this.status = status;
         this.sizeColor = sizeColor;
     }
@@ -140,5 +146,29 @@ public class ListProductModel implements Serializable {
 
     public void setSizeColorModel(ArrayList<SizeColorModel> sizeColor) {
         this.sizeColor = sizeColor;
+    }
+
+    public String getDate_export() {
+        return date_export;
+    }
+
+    public void setDate_export(String date_export) {
+        this.date_export = date_export;
+    }
+
+    public String getTotal_import() {
+        return total_import;
+    }
+
+    public void setTotal_import(String total_import) {
+        this.total_import = total_import;
+    }
+
+    public String getTotal_export() {
+        return total_export;
+    }
+
+    public void setTotal_export(String total_export) {
+        this.total_export = total_export;
     }
 }

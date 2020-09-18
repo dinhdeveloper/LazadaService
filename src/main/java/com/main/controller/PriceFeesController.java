@@ -1,7 +1,9 @@
 package com.main.controller;
 
 import com.main.exception.RecordNotFoundException;
+import com.main.model.ListProductModel;
 import com.main.model.PriceFeesModel;
+import com.main.model.ProductPriceModel;
 import com.main.service.PriceFeesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -27,6 +29,11 @@ public class PriceFeesController {
             throws RecordNotFoundException {
         PriceFeesModel updated = service.createOrUpdatePriceFees(product);
         return new ResponseEntity<PriceFeesModel>(updated, new HttpHeaders(), HttpStatus.OK);
+    }
+
+    @GetMapping("/product")
+    public List<ProductPriceModel> getListSize() {
+        return service.getListProduct();
     }
 
     @DeleteMapping("/{id}")
