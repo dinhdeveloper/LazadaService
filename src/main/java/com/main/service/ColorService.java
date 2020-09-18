@@ -29,9 +29,9 @@ public class ColorService {
 
     //get by CateId
     public List<ColorModel> getColorByCateId(Integer id) throws RecordNotFoundException {
-        List<ColorModel> productList = repository.findByCategoryId(id);
-        if (productList.size() > 0) {
-            return productList;
+        List<ColorModel> list = repository.findByCategoryId(id);
+        if (list.size() > 0) {
+            return list;
         } else {
             return new ArrayList<ColorModel>();
         }
