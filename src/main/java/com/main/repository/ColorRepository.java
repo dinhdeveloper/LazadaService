@@ -17,5 +17,5 @@ public interface  ColorRepository extends JpaRepository<ColorModel, Integer> {
 
 
     @Query("SELECT e FROM ColorModel e WHERE e.product_id = ?1")
-    List<ColorModel> findByCategoryId(Integer id);
+    List<ColorModel> findByProductId(Integer id);
 }

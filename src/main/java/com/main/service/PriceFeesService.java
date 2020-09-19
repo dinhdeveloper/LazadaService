@@ -57,7 +57,7 @@ public class PriceFeesService {
                 if (entity.getPrice_ship() != null) {
                     newEntity.setPrice_ship(entity.getPrice_ship());
                 }
-                if (entity.getProduct_id() != null) {
+                if (entity.getProduct_id() != 0) {
                     newEntity.setProduct_id(entity.getProduct_id());
                 }
                 if (entity.getPrice_sell() != null) {

@@ -16,7 +16,7 @@ public class ColorModel implements Serializable {
     @Column(name = "size_id")
     private String  size_id;
     @Column(name = "product_id")
-    private String  product_id;
+    private int  product_id;
     @Column(name = "color_name")
     private String color_name;
     @Column(name = "color_description")
@@ -48,11 +48,11 @@ public class ColorModel implements Serializable {
         this.size_id = size_id;
     }
 
-    public String getProduct_id() {
+    public int getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(int product_id) {
         this.product_id = product_id;
     }
 

@@ -29,7 +29,7 @@ public class ColorService {
 
     //get by CateId
     public List<ColorModel> getColorByCateId(Integer id) throws RecordNotFoundException {
-        List<ColorModel> list = repository.findByCategoryId(id);
+        List<ColorModel> list = repository.findByProductId(id);
         if (list.size() > 0) {
             return list;
         } else {
@@ -50,7 +50,7 @@ public class ColorService {
                 if (entity.getSize_id() != null) {
                     newEntity.setSize_id(entity.getSize_id());
                 }
-                if (entity.getProduct_id() != null) {
+                if (entity.getProduct_id() != 0) {
                     newEntity.setProduct_id(entity.getProduct_id());
                 }
                 if (entity.getColor_name() != null) {
@@ -75,6 +75,7 @@ public class ColorService {
             return entity;
         }
     }
+
     //delete
     public void deleteColorById(Integer id) throws RecordNotFoundException {
         Optional<ColorModel> product = repository.findById(id);
