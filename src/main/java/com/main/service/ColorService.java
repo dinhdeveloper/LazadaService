@@ -28,12 +28,12 @@ public class ColorService {
     }
 
     //get by CateId
-    public List<ColorModel> getColorByCateId(Integer id) throws RecordNotFoundException {
-        List<ColorModel> list = repository.findByProductId(id);
-        if (list.size() > 0) {
-            return list;
+    public ColorModel findCateById(Integer id) throws RecordNotFoundException {
+        Optional<ColorModel> productCategory = repository.findById(id);
+        if (productCategory.isPresent()) {
+            return productCategory.get();
         } else {
-            return new ArrayList<ColorModel>();
+            throw new RecordNotFoundException("No category record exist for given id", id);
         }
     }
 
@@ -44,20 +44,44 @@ public class ColorService {
 
             if (oldPro.isPresent()) {
                 ColorModel newEntity = oldPro.get();
+                if (entity.getId() != null) {
+                    newEntity.setId(entity.getId());
+                }
+                if (entity.getId_product() != null) {
+                    newEntity.setId_product(entity.getId_product());
+                }
+                if (entity.getName() != null) {
+                    newEntity.setName(entity.getName());
+                }
                 if (entity.getId_code() != null) {
                     newEntity.setId_code(entity.getId_code());
                 }
-                if (entity.getSize_id() != null) {
-                    newEntity.setSize_id(entity.getSize_id());
+                if (entity.getDescription() != null) {
+                    newEntity.setDescription(entity.getDescription());
                 }
-                if (entity.getProduct_id() != 0) {
-                    newEntity.setProduct_id(entity.getProduct_id());
+                if (entity.getPrice_import() != null) {
+                    newEntity.setPrice_import(entity.getPrice_import());
                 }
-                if (entity.getColor_name() != null) {
-                    newEntity.setColor_name(entity.getColor_name());
+                if (entity.getPrice_export() != null) {
+                    newEntity.setPrice_export(entity.getPrice_export());
                 }
-                if (entity.getColor_description() != null) {
-                    newEntity.setColor_description(entity.getColor_description());
+                if (entity.getQuantity_import() != null) {
+                    newEntity.setQuantity_import(entity.getQuantity_import());
+                }
+                if (entity.getQuantity_export() != null) {
+                    newEntity.setQuantity_import(entity.getQuantity_export());
+                }
+                if (entity.getTotal_import() != null) {
+                    newEntity.setTotal_import(entity.getTotal_import());
+                }
+                if (entity.getTotal_export() != null) {
+                    newEntity.setTotal_export(entity.getTotal_export());
+                }
+                if (entity.getDate_import() != null) {
+                    newEntity.setDate_import(entity.getDate_import());
+                }
+                if (entity.getDate_export() != null) {
+                    newEntity.setDate_export(entity.getDate_export());
                 }
                 if (entity.getStatus() != null) {
                     newEntity.setStatus(entity.getStatus());

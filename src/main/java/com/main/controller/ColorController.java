@@ -26,9 +26,9 @@ public class ColorController {
     }
 
     @GetMapping("/product={id}")
-    public ResponseEntity<List<ColorModel>> getByCateId(@PathVariable("id") Integer id) throws RecordNotFoundException {
-        List<ColorModel> optional = service.getColorByCateId(id);
-        return new ResponseEntity<List<ColorModel>>(optional,new HttpHeaders(),HttpStatus.OK);
+    public ResponseEntity<ColorModel> getById(@PathVariable("id") Integer id) throws RecordNotFoundException {
+        ColorModel optional = service.findCateById(id);
+        return new ResponseEntity<ColorModel>(optional, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping
